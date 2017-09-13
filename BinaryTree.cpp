@@ -1,5 +1,6 @@
 #include <iostream>
 #include <math.h>
+#include <queue>
 #include "BinaryTree.h"
 
 using namespace std;
@@ -58,22 +59,22 @@ void BinaryTree::printInOrder() {
 template<typename T>
 void BinaryTree::printInOrderPrivate(Leaf<T> * node) {
 
-    if(node != nullptr) {
-
-        if (node->getLeftChildren() != nullptr) {
-            printInOrderPrivate(node->getLeftChildren());
-        }
-
-        cout << node->getValue();
-
-        if (node->getRightChildren() != nullptr) {
-            printInOrderPrivate(node->getRightChildren());
-        }
-    }
-
-    else {
-        cout << "The tree is empty." << endl;
-    }
+//    if(node != nullptr) {
+//
+//        if (node->getLeftChildren() != nullptr) {
+//            printInOrderPrivate(node->getLeftChildren());
+//        }
+//
+//        cout << node->getValue();
+//
+//        if (node->getRightChildren() != nullptr) {
+//            printInOrderPrivate(node->getRightChildren());
+//        }
+//    }
+//
+//    else {
+//        cout << "The tree is empty." << endl;
+//    }
 }
 
 
@@ -117,9 +118,7 @@ void BinaryTree::printNodePrivate(Leaf<T> * node, int spaces) {
 
 template<typename T>
 void BinaryTree::printTreePrivate(Leaf<T> * node, int spaces) {
-//    printNodePrivate(node, spaces);
-//    if(node->getLeftChildren() != nullptr) printNodePrivate(node->getLeftChildren(), spaces / 2);
-//    if(node->getRightChildren() != nullptr) printNodePrivate(node->getRightChildren(), spaces / 2);
+
 }
 
 template<typename T>
