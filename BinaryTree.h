@@ -16,6 +16,12 @@ private:
 
     void printInOrderPrivate(Leaf<T> * node);
 
+    void printTreePrivate(Leaf<T> * node, int spaces);
+
+    void printNodePrivate(Leaf<T> * node, int spaces);
+
+    int getDepthPrivate(Leaf<T> * node, int depth = 0);
+
 public:
 
     BinaryTree(T value);
@@ -27,6 +33,10 @@ public:
     void put(T value);
 
     void printInOrder();
+
+    void printTree();
+
+    int getDepth();
 };
 
 

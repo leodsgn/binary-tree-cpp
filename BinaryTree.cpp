@@ -1,8 +1,10 @@
 #include <iostream>
+#include <math.h>
 #include "BinaryTree.h"
 
 using namespace std;
 
+const int SPACE = 2;
 
 BinaryTree::BinaryTree() {}
 
@@ -56,8 +58,83 @@ void BinaryTree::printInOrder() {
 template<typename T>
 void BinaryTree::printInOrderPrivate(Leaf<T> * node) {
 
-    if(node != nullptr) {}
+    if(node != nullptr) {
+
+        if (node->getLeftChildren() != nullptr) {
+            printInOrderPrivate(node->getLeftChildren());
+        }
+
+        cout << node->getValue();
+
+        if (node->getRightChildren() != nullptr) {
+            printInOrderPrivate(node->getRightChildren());
+        }
+    }
+
     else {
         cout << "The tree is empty." << endl;
     }
+}
+
+
+void BinaryTree::printTree() {
+    printTreePrivate(father, getDepth());
+}
+
+template<typename T>
+int BinaryTree::getDepth() {
+    Leaf<T> * node = father;
+    return getDepthPrivate(node);
+}
+
+template<typename T>
+void BinaryTree::printNodePrivate(Leaf<T> * node, int spaces) {
+    try {
+        if (node != nullptr) {
+            if (spaces != 0 && spaces % 2 == 0) {
+                int depth = 0;
+
+                while (depth < spaces / 2) {
+                    cout << ' ';
+                    depth++;
+                }
+                cout << node->getValue();
+                while (depth < spaces / 2) {
+                    cout << ' ';
+                    depth++;
+                }
+            }
+
+            else {
+                throw 'Spaces should have 0 as rest.';
+            }
+        }
+    }
+    catch (string error) {
+        cout << error << endl;
+    }
+}
+
+template<typename T>
+void BinaryTree::printTreePrivate(Leaf<T> * node, int spaces) {
+//    printNodePrivate(node, spaces);
+//    if(node->getLeftChildren() != nullptr) printNodePrivate(node->getLeftChildren(), spaces / 2);
+//    if(node->getRightChildren() != nullptr) printNodePrivate(node->getRightChildren(), spaces / 2);
+}
+
+template<typename T>
+int BinaryTree::getDepthPrivate(Leaf<T> * node, int depth = 0) {
+    int depthLeft = 0;
+    int depthRight = 0;
+
+    if (node != nullptr) {
+        if (node->getLeftChildren() != nullptr) {
+            depthLeft += getDepthPrivate(node->getLeftChildren(), depth + 1);
+        }
+        else if (node->getRightChildren() != nullptr) {
+            depthRight += getDepthPrivate(node->getRightChildren(), depth + 1);
+        }
+    }
+
+    return depthLeft >= depthRight ? (int) pow(2, depthLeft) : (int) pow(2, depthRight);
 }
