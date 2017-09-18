@@ -1,6 +1,6 @@
 #include <iostream>
 #include <math.h>
-#include <queue>
+#include <>
 #include "BinaryTree.h"
 
 using namespace std;
@@ -75,6 +75,9 @@ void BinaryTree::printInOrderPrivate(Leaf<T> * node) {
 //    else {
 //        cout << "The tree is empty." << endl;
 //    }
+
+    Queue * queue = new Queue();
+
 }
 
 
